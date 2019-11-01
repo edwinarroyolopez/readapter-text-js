@@ -1,0 +1,10 @@
+#container{
+    border: solid 1px #CCC;
+    height: 500px;
+    width: 80%;
+}
+
+#container div{
+    border: solid 1px #CCC;
+    width: 600px;
+}

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>index</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript">
+        $(document).on('ready',function(){
+
+            console.log('jquery -- on')
+            $('#container').on('resize', function(){
+                console.log('resized');
+            })
+
+            $('div').each(function(){
+
+                console.log('--- ')
+                    /* control de  tamao de fuente */
+                    var width_hijo = $(this).width();
+                    var width_padre = $(this).parent().width();
+
+                    console.log('h:',width_hijo,' p:',width_padre)
+
+                    var height_hijo = $(this).height();
+
+                    if(width_hijo>width_padre){/* Es necesario readaptar texto */
+                        $(this).width(width_padre);
+
+                                /* Calcular proporcion respecto al tamao del padre */
+                                var proporcion = (width_hijo*100)/width_padre;
+
+                                var nuevo_tamano_fuente = (100/proporcion).toFixed(2);
+                                $(this).css('font-size',nuevo_tamano_fuente+'em');
+                    }
+                    /* tamao de fuente */
+            })
+
+        })
+</script>
+</head>
+<body>
+    <div id="container">
+        <div>C1</div>
+        <div>C2</div>
+        <div>C3</div>
+        <div>C4</div>
+    </div>
+</body>
+</html>
